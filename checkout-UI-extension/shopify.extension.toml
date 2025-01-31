@@ -1,0 +1,296 @@
+# Learn more about configuring your checkout UI extension:
+# https://shopify.dev/api/checkout-extensions/checkout/configuration
+
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
+api_version = "2024-07"
+
+
+
+[[extensions]]
+type = "ui_extension"
+name = "Message After Address"
+handle = "message-after-address"
+
+[[extensions.targeting]]
+module = "./src/Checkout.tsx"
+target = "purchase.checkout.delivery-address.render-after"
+
+# Defines settings that will be collected from merchants installing
+# your extension. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
+
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "shipping_address_message"
+type = "multi_line_text_field"
+name = "Shipping address message"
+description = "Enter a message to display after the shipping address form"
+
+
+[[extensions]]
+type = "ui_extension"
+name = "Message After Shipping Method"
+handle = "message-after-shipping"
+
+[[extensions.targeting]]
+module = "./src/ShippingMethodMessage.tsx"
+target = "purchase.checkout.shipping-option-list.render-after"
+
+
+
+
+#[[extensions]]
+#name = "eqxplus-checkout-ui-extension"
+#handle = "eqxplus-checkout-ui-extension"
+#type = "ui_extension"
+
+
+# Controls where in Shopify your extension will be injected,
+# and the file that contains your extension’s source code. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+
+#[[extensions.targeting]]
+#module = "./src/Checkout.tsx"
+##target = "purchase.checkout.block.render"
+#target = "purchase.checkout.delivery-address.render-after"
+
+#[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
+api_access = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
+# network_access = true
+
+
+
+#[[extensions]]
+#type = "ui_extension"
+#name = "eqxplus-shipping-method"
+#handle = "eqxplus-shipping-method"
+
+# This is also a static extension target
+#[[extensions.targeting]]
+#module = "./src/ShippingMethodMessage.tsx"
+#target = "purchase.checkout.shipping-option-list.render-after"
+
+	#[extensions.capabilities]
+	# Gives your extension access to directly query Shopify’s storefront API.
+	# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
+	# Gives your extension access to make external network calls, using the
+	# JavaScript `fetch()` API. Learn more:
+	# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
+	block_progress = true
+
+
+
+
+
+# Loads metafields on checkout resources, including the cart,
+# products, customers, and more. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
+
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_key"
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_other_key"
+
+# Defines settings that will be collected from merchants installing
+# your extension. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
+
+[[extensions.settings.fields]]
+key = "jb_hunt_desc"
+type = "multi_line_text_field"
+name = "JB Hunt Description"
+description = "Enter JB Hunt description"
+
+[[extensions.settings.fields]]
+key = "bike_extra_shipping_info"
+type = "multi_line_text_field"
+name = "Bike Extra shipping info"
+description = "Enter bike extra shipping information"
+
+[[extensions.settings.fields]]
+key = "recertified_shipping_info"
+type = "multi_line_text_field"
+name = "Recertified Extra shipping info"
+description = "Enter Recertified Extra shipping information"
+
+[[extensions.settings.fields]]
+key = "order_cutoff_sameday_shipping"
+type = "multi_line_text_field"
+name = "Order cutoff for same day shipping"
+description = "Enter Order cutoff for same day shipping information"
+
+[[extensions.settings.fields]]
+key = "enable_restricted_shipping"
+type = "boolean"
+name = "Enable restricted shipping message"
+
+[[extensions.settings.fields]]
+key = "restricted_state_list"
+type = "single_line_text_field"
+name = "Comma separated list of restricted states (ex: NY,CA,MT)"
+
+#[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
+api_access = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
+# network_access = true
+
+# This is also a static extension target
+[[extensions]]
+type = "ui_extension"
+name = "Edit cart content"
+handle = "block-before-order-summary"
+
+[[extensions.targeting]]
+module = "./src/EditCart.tsx"
+target = "purchase.checkout.block.render"
+
+#[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
+api_access = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
+# network_access = true
+
+
+[[extensions.settings.fields]]
+key = "enable_editcart_module"
+type = "boolean"
+name = "Enable edit cart link"
+
+[[extensions.settings.fields]]
+key = "edit_cart"
+type = "single_line_text_field"
+name = "Edit cart content"
+
+[[extensions.settings.fields]]
+key = "shop_url"
+type = "single_line_text_field"
+name = "Shopify Store Address (shop_url)"
+
+[[extensions.settings.fields]]
+key = "home_url"
+type = "single_line_text_field"
+name = "Equinox+ Web Address (home_url)"
+
+[[extensions.settings.fields]]
+key = "bike_querystring"
+type = "single_line_text_field"
+name = "Equinox+ Bike (query_string)"
+
+[[extensions.settings.fields]]
+key = "amexbikebenefit"
+type = "single_line_text_field"
+name = "Equinox+ Amex Bike Benefit (query_string)"
+
+[[extensions.settings.fields]]
+key = "amexbikeoffer"
+type = "single_line_text_field"
+name = "Equinox+ Amex Bike Offer (query_string)"
+
+[[extensions]]
+type = "ui_extension"
+name = "Bunle cart line item"
+handle = "bundle-cart-line-item"
+
+[[extensions.targeting]]
+module = "./src/UpdateBundleItem.tsx"
+target = "purchase.checkout.cart-line-item.render-after"
+
+#[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
+api_access = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
+# network_access = true
+
+[[extensions.settings.fields]]
+key = "bike_description"
+type = "single_line_text_field"
+name = "Equinox+ Bike item description"
+
+# This is also a static extension target
+[[extensions]]
+type = "ui_extension"
+name = "Thankyou page content"
+handle = "Thankyou-block-message"
+
+[[extensions.targeting]]
+module = "./src/ThankyouMessage.tsx"
+target = "purchase.thank-you.block.render"
+export = "thankYourMessage"
+
+[[extensions.targeting]]
+module = "./src/ThankyouMessage.tsx"
+target = "customer-account.order-status.block.render"
+export = "orderDetailsMessage"
+
+#[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
+api_access = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
+# network_access = true
+
+[[extensions.settings.fields]]
+key = "membership_header"
+type = "single_line_text_field"
+name = "Equinox+ Membership Header"
+
+[[extensions.settings.fields]]
+key = "membership_body"
+type = "multi_line_text_field"
+name = "Equinox+ Membership Body"
+
+[[extensions.settings.fields]]
+key = "membership_button_text"
+type = "single_line_text_field"
+name = "Equinox+ Membership Button Text"
+
+[[extensions.settings.fields]]
+key = "membership_button_url"
+type = "single_line_text_field"
+name = "Equinox+ Membership Signup URL"
+
+[[extensions.settings.fields]]
+key = "membership_button_target"
+type = "boolean"
+name = "Open Page In New Tab"
+
+[[extensions.settings.fields]]
+key = "thankyou_title"
+type = "single_line_text_field"
+name = "Checkout Thank You Default Title Text"
+
+[[extensions.settings.fields]]
+key = "thankyou_bike_title"
+type = "single_line_text_field"
+name = "Checkout Thank You Bike Title Text"
+
+[[extensions.settings.fields]]
+key = "Thankyou_bike_message"
+type = "multi_line_text_field"
+name = "Checkout Thank You Bike Copy For Bike Orders"
+
